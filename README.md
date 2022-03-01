@@ -1,3 +1,3 @@
-# products
+# Products
 
 API for Products
