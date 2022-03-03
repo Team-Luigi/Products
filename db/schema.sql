@@ -1,78 +1,57 @@
+DROP DATABASE IF EXISTS sdcproducts;
+CREATE DATABASE sdcproducts;
+\c sdcproducts;
 
+DROP TABLE IF EXISTS products, features, styles, photos, skus;
 
 CREATE TABLE products (
- id BIGSERIAL,
+ id BIGSERIAL PRIMARY KEY,
  name VARCHAR NOT NULL,
  slogan VARCHAR NOT NULL,
  description VARCHAR NOT NULL,
- default_price INTEGER NOT NULL,
+ category VARCHAR NOT NULL,
+ default_price INTEGER NOT NULL
 );
 
-
-ALTER TABLE products ADD CONSTRAINT products_pkey PRIMARY KEY (id);
-
 CREATE TABLE features (
- id BIGSERIAL,
+ id BIGSERIAL PRIMARY KEY,
+ id_products INTEGER,
  feature VARCHAR NOT NULL,
  value VARCHAR NOT NULL
 );
 
-
-ALTER TABLE features ADD CONSTRAINT features_pkey PRIMARY KEY (id);
-
 CREATE TABLE styles (
- id BIGSERIAL,
+ id BIGSERIAL PRIMARY KEY,
  id_products INTEGER,
  name VARCHAR NOT NULL,
- original_price INTEGER NOT NULL,
  sale_price INTEGER,
- default? BOOLEAN NOT NULL
+ original_price INTEGER NOT NULL,
+ default_style BOOLEAN NOT NULL
 );
 
-
-ALTER TABLE styles ADD CONSTRAINT styles_pkey PRIMARY KEY (id);
-
 CREATE TABLE photos (
- id BIGSERIAL,
+ id BIGSERIAL PRIMARY KEY,
  id_styles INTEGER,
  thumbnail_url VARCHAR,
  url VARCHAR
 );
 
-
-ALTER TABLE photos ADD CONSTRAINT photos_pkey PRIMARY KEY (id);
-
 CREATE TABLE skus (
- id BIGSERIAL,
+ id BIGSERIAL PRIMARY KEY,
  id_styles INTEGER,
- sku INTEGER NOT NULL,
- quantity INTEGER NOT NULL,
  size VARCHAR NOT NULL,
- UNIQUE (sku)
+ quantity INTEGER NOT NULL
 );
 
 
-ALTER TABLE skus ADD CONSTRAINT skus_pkey PRIMARY KEY (id);
-
-CREATE TABLE related (
- id BIGSERIAL,
- id_products INTEGER,
- related_product_id INTEGER,
- UNIQUE (related_product_id)
-);
-
-CREATE TABLE products_features (
- id BIGSERIAL,
- id_products INTEGER,
- id_features INTEGER
-);
-
-
-
-ALTER TABLE products_features ADD CONSTRAINT products_features_pkey PRIMARY KEY (id);
-
+ALTER TABLE features ADD CONSTRAINT features_id_products_fkey FOREIGN KEY (id_products) REFERENCES products(id);
 ALTER TABLE styles ADD CONSTRAINT styles_id_products_fkey FOREIGN KEY (id_products) REFERENCES products(id);
 ALTER TABLE photos ADD CONSTRAINT photos_id_styles_fkey FOREIGN KEY (id_styles) REFERENCES styles(id);
 ALTER TABLE skus ADD CONSTRAINT skus_id_styles_fkey FOREIGN KEY (id_styles) REFERENCES styles(id);
-ALTER TABLE products_features ADD CONSTRAINT products_features_id_products_fkey FOREIGN KEY (id_products) REFERENCES products(id);
-ALTER TABLE products_features ADD CONSTRAINT products_features_id_features_fkey FOREIGN KEY (id_features) REFERENCES features(id);
+
+\COPY products FROM '../Files/product.csv' DELIMITER ',' CSV HEADER;
+\COPY features FROM '../Files/features.csv' DELIMITER ',' CSV HEADER;
+\COPY styles FROM '../Files/styles.csv' DELIMITER ',' CSV NULL AS 'null' HEADER;
+UPDATE styles SET sale_price=0 WHERE sale_price IS NULL;
+\COPY photos FROM '../Files/photos.csv' DELIMITER ',' CSV HEADER;
+\COPY skus FROM '../Files/skus.csv' DELIMITER ',' CSV HEADER;
