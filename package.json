@@ -4,8 +4,8 @@
   "description": "API for Products",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack -w",
-    "jest": "jest"
+    "jest": "jest",
+    "start": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,20 +18,13 @@
   },
   "homepage": "https://github.com/Team-Luigi/Products#readme",
   "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "@babel/plugin-transform-runtime": "^7.17.0",
-    "@babel/preset-env": "^7.16.11",
-    "babel-loader": "^8.2.3",
-    "babel-preset-airbnb": "^5.0.0",
     "eslint-config-airbnb": "^19.0.4",
     "jest": "^27.5.1",
-    "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2"
+    "nodemon": "^2.0.15"
   },
   "dependencies": {
     "axios": "^0.26.0",
     "express": "^4.17.3",
-    "mongodb": "^4.4.0",
-    "postgres": "^1.0.2"
+    "pg": "^8.7.3"
   }
 }
