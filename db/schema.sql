@@ -55,3 +55,4 @@ ALTER TABLE skus ADD CONSTRAINT skus_id_styles_fkey FOREIGN KEY (id_styles) REFE
 UPDATE styles SET sale_price=0 WHERE sale_price IS NULL;
 \COPY photos FROM '../Files/photos.csv' DELIMITER ',' CSV HEADER;
 \COPY skus FROM '../Files/skus.csv' DELIMITER ',' CSV HEADER;
+
