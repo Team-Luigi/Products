@@ -4,7 +4,7 @@
   "description": "API for Products",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --force-exit --runInBand --config=Server/Test/jest.config.js",
     "start": "nodemon server/index.js"
   },
   "repository": {
