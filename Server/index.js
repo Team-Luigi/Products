@@ -15,3 +15,5 @@ app.get('/api/products/:id/styles', controller.getStyles);
 
 
 app.listen(3000);
+
+module.exports = app;

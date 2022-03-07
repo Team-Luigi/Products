@@ -4,7 +4,7 @@
   "description": "API for Products",
   "main": "index.js",
   "scripts": {
-    "jest": "jest",
+    "test": "jest",
     "start": "nodemon server/index.js"
   },
   "repository": {
@@ -25,6 +25,7 @@
   "dependencies": {
     "axios": "^0.26.0",
     "express": "^4.17.3",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "supertest": "^6.2.2"
   }
 }

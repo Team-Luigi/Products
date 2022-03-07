@@ -15,6 +15,7 @@ module.exports = {
     let params = [req.params.id];
     model.getOneProduct(params, (err, products) => {
       if ((err)) {
+        console.log(err);
         res.sendStatus(500);
       } else {
         res.send(products.rows);

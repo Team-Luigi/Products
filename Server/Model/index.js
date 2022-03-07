@@ -19,13 +19,14 @@ module.exports = {
       }
     });
   },
+
   getOneProduct: (params, callback) => {
     let queryString = `SELECT products.*, json_agg(
       json_build_object(
         'feature', features.feature,
         'value', features.value
       )
-    ) as features FROM products JOIN features ON product.id=features.product_id WHERE products.id=$1 group by products.id`;
+    ) as features FROM products JOIN features ON products.id=features.product_id WHERE products.id=$1 group by products.id`;
     pool.query(queryString, params, (err, products) => {
       if (err) {
         callback(err);
