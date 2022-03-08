@@ -43,6 +43,7 @@ CREATE TABLE skus (
  quantity INTEGER NOT NULL
 );
 
+
 \COPY products FROM '../Files/product.csv' DELIMITER ',' CSV HEADER;
 \COPY features FROM '../Files/features.csv' DELIMITER ',' CSV HEADER;
 \COPY styles FROM '../Files/styles.csv' DELIMITER ',' CSV NULL AS 'null' HEADER;
@@ -54,6 +55,7 @@ ALTER TABLE features ADD CONSTRAINT features_product_id_fkey FOREIGN KEY (produc
 ALTER TABLE styles ADD CONSTRAINT styles_product_id_fkey FOREIGN KEY (product_id) REFERENCES products(id);
 ALTER TABLE photos ADD CONSTRAINT photos_style_id_fkey FOREIGN KEY (style_id) REFERENCES styles(id);
 ALTER TABLE skus ADD CONSTRAINT skus_style_id_fkey FOREIGN KEY (style_id) REFERENCES styles(id);
+
 
 CREATE INDEX ON features (product_id);
 CREATE INDEX ON styles (product_id);
