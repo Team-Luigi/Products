@@ -1,22 +1,14 @@
-const { Pool } = require('pg')
+const { Pool } = require('pg');
+const {HOST, USER, PASSWORD, DATABASE} = require('./config.js');
 
 // Post Deployment
 const pool = new Pool({
-  host: '3.92.115.8',
+  host: HOST,
   port: 5432,
-  user: 'lorenechew',
-  password: 'pineapple',
-  database: 'vmsdcproducts',
+  user: USER,
+  password: PASSWORD,
+  database: DATABASE,
 })
-
-// Pre Deployment
-// const pool = new Pool({
-//   host: 'localhost',
-//   port: 5432,
-//   user: 'lorenechew',
-//   password: '',
-//   database: 'sdcproducts',
-// })
 
 module.exports = pool;
 
