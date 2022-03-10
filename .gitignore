@@ -1,2 +1,6 @@
 node_modules
 /Files
+newrelic_agent.log
+newrelic.js
+sdcproductsArchivedDb.dump
+/db/index.js

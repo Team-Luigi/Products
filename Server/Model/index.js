@@ -1,12 +1,4 @@
-const { Pool } = require('pg')
-
-const pool = new Pool({
-  host: 'localhost',
-  port: 5432,
-  user: 'lorenechew',
-  password: '',
-  database: 'sdcproducts',
-})
+const pool = require('../../db');
 
 module.exports = {
   getManyProduct: (callback) => {

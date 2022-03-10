@@ -15,7 +15,7 @@ export default function () {
   // http.get(url);
   // sleep(1);
   const responses = http.batch([
-    ['GET', urlProduct],
+    // ['GET', urlProduct],
     ['GET', urlStyles]
   ]);
 }
