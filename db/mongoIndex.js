@@ -1,3 +1,5 @@
+// File not in use
+
 const mongoose = require('mongoose');
 const db = mongoose.connect('mongodb://localhost/fetcher', {
   useNewUrlParser: true,

@@ -19,6 +19,7 @@ module.exports = {
         'value', features.value
       )
     ) as features FROM products JOIN features ON products.id=features.product_id WHERE products.id=$1 group by products.id`;
+
     pool.query(queryString, params, (err, products) => {
       if (err) {
         callback(err);
@@ -70,7 +71,7 @@ module.exports = {
 }
 
 
-
+// Dupe code for edit accessibility
 // SELECT styles.product_id,
 //       (SELECT json_agg(
 //         json_build_object(
