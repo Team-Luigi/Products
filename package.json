@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --force-exit --runInBand --config=Server/Test/jest.config.js",
-    "start": "nodemon Server/index.js"
+    "start": "bash init.sh"
   },
   "repository": {
     "type": "git",
