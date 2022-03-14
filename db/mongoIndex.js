@@ -19,7 +19,6 @@ let photos = mongoose.Schema({
 })
 
 let products = mongoose.Schema({
-  // TODO: your schema here!
   _id: Number,
   productId: Number,
   name: String,

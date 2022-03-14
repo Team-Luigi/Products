@@ -56,7 +56,6 @@ ALTER TABLE styles ADD CONSTRAINT styles_product_id_fkey FOREIGN KEY (product_id
 ALTER TABLE photos ADD CONSTRAINT photos_style_id_fkey FOREIGN KEY (style_id) REFERENCES styles(id);
 ALTER TABLE skus ADD CONSTRAINT skus_style_id_fkey FOREIGN KEY (style_id) REFERENCES styles(id);
 
--- Creating secondary index for constant time lookup vs linear lookup
 CREATE INDEX ON features (product_id);
 CREATE INDEX ON styles (product_id);
 CREATE INDEX ON photos (style_id);

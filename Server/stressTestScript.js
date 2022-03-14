@@ -6,16 +6,15 @@ export const options = {
   duration: '15s',
 };
 
-
-const id = Math.floor(Math.random() * 1000011);
+const min = 900000;
+const max = 1000000;
+const id = Math.floor(Math.random() * (max - min) + min);
 const urlProduct = `http://localhost:3000/api/products/${id}`
 const urlStyles = `http://localhost:3000/api/products/${id}/styles`
 
 export default function () {
-  // http.get(url);
-  // sleep(1);
   const responses = http.batch([
-    // ['GET', urlProduct],
+    ['GET', urlProduct],
     ['GET', urlStyles]
   ]);
 }
